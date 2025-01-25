@@ -9,19 +9,19 @@ const addresses = [
   '0xF98cBc736F9b0D637b1fFDd0eF663e07d4b42691'
 ];
 
-
+// Generate leaf nodes by hashing addresses
 const leafNodes = addresses.map(addr => SHA256(addr).toString());
 const merkleTree = new MerkleTree(leafNodes, SHA256);
 
-
+// Get the Merkle root
 const root = merkleTree.getRoot().toString('hex');
 console.log("Merkle Root:", root);
 
-// Generates proof for specific address
-const addressToVerify = "0x123456789abcdef123456789abcdef123456789a";
+// Generate proof for a specific address
+const addressToVerify = "0xF98cBc736F9b0D637b1fFDd0eF663e07d4b42691"; // Example address
 const leafToVerify = SHA256(addressToVerify).toString();
 const proof = merkleTree.getProof(leafToVerify);
 
-
+// Verify the proof
 const isValid = merkleTree.verify(proof, leafToVerify, root);
-console.log(Address ${addressToVerify} is part of the tree?, isValid); // Verify's the proof
+console.log(`Address ${addressToVerify} is part of the tree?`, isValid);
