@@ -8,5 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "merkletreejs": "^0.4.1"
+  }
 }
